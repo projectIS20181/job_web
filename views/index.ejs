@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+    <% if(joblist.length > 0) { %>
+      <ul class="nav justify-content-center|justify-content-end"><%
+        for( var job of joblist) { %>
+          <li class="nav-item">
+              <a class="nav-link active btn btn-secondary" href="/jobs/view?key=<%= job.key %>" role="button"> <%= job.key %> </a>
+          </li>
+          <%
+        } 
+      %>
+      </ul>
+    <% } %>
+    
+  </body>
+</html>

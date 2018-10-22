@@ -1,0 +1,40 @@
+.page {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.page .wrap_1920 {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.page .pageHeader{
+    background-color:#E7F3F1; 
+}
+
+.wrap_1920 .wrap_1170 {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.wrap_1170 ul {
+    list-style: none;
+}
+
+.wrap_1170 li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.wrap_1170 li:hover {
+    background-color: aqua;
+    text-decoration: underline;
+}
+
+.wrap_1170 li a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+

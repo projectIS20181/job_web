@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/jobv1/bower_components/bootstrap/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="dangtin.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="page">
+        
+        <div class="wrap_1920 pageHeader">
+            <div class="wrap_1170 ">
+                <ul>
+                    <li>
+                        <a href="#" title="tìm hồ sơ">
+                            <span class="icon"></span>
+                            <span class="text">tìm hồ sơ</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" title="tài khoản">
+                            <span class="icon"></span>
+                            <span class="text">tài khoản</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#" title="đăng tin">
+                            <span class="icon"></span>
+                            <span class="text">đăng tin</span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#" title="tìm hồ sơ">
+                            <span class="icon"></span>
+                            <span class="text">tìm hồ sơ</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" title="quản lý tin đăng">
+                            <span class="icon"></span>
+                            <span class="text">quản lý tin đăng</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" title="hồ sơ đã lưu">
+                            <span class="icon"></span>
+                            <span class="text">quản lý tin đăng</span>
+                        </a>
+                    </li>
+
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+       <form action="/jobs/save" method="POST" role="form">
+           <legend class="text-danger">đăng tin tuyển dụng</legend>
+       
+
+           <div class="form-group row">
+               <label for="" class="col-lg-2 col-md-2 text-right">khoá bài đăng</label>
+               
+               <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                   <input type="text" class="form-control" id="" >
+               </div>               
+           </div>
+           
+           
+           <input type="hidden" name="company_id" id="inputcompany_id" class="form-control" value="1">
+           <input type="hidden" name="industry_id" id="inputindustry_id" class="form-control" value="1">
+           <input type="hidden" name="work_id" id="inputwork_id" class="form-control" value="1">
+           <div class="form-group row">
+                <label for="" class="col-lg-2 col-md-2 text-right" >vị trí</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="number" name="position" id="input" class="form-control" value="" min="1" max="" step="" required="required" title="" >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-lg-2 col-md-2 text-right" >mô tả</label>
+                
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <textarea class="form-control" id="" rows="10" name="description"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-lg-2 col-md-2 text-right" >yêu cầu</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <textarea class="form-control" id="" rows="10" name="requirement"></textarea>
+                </div>
+            </div>
+           
+            <div class="form-group row">
+                <label for="" class="col-lg-2 col-md-2 text-right" >địa điểm</label>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" name="location" id="input" class="form-control" value="" required="required" pattern="" title="">
+                </div>
+            </div>
+           
+           <div class="form-group row">
+               <label for="" class="col-lg-2 col-md-2 text-right" >lương tối thiểu</label>
+               <div class="col-xs-3">
+                   <input type="text" name="min_salary" id="input_min_salary" class="form-control" value="" required="required" pattern="" title="">
+               </div>
+           </div>
+
+           <div class="form-group row">
+               <label for="" class="col-lg-2 col-md-2 text-right" >lương tối đa</label>
+               <div class="col-xs-3">
+                    <input type="text" name="max_salary" id="input_max_salary" class="form-control" value="" required="required" pattern="" title="">                   
+               </div>
+           </div>
+
+           <div class="form-group row">
+                <label for="input" class="col-sm-2 control-label text-right">kiểu tiền tệ</label>
+                <div class="col-sm-10">
+                    <select name="type_salary" id="input" class="form-control">
+                        <option value="">--chọn--</option>
+                        <option value="1">NEGOTIATION</option>
+                        <option value="2">VND</option>
+                        <option value="3">USD</option>
+                    </select>
+                </div>
+            </div>
+
+           <div class="form-group row">
+               <label for="input" class="col-sm-2 control-label text-right">kiểu công việc</label>
+               <div class="col-sm-10">
+                   <select name="type_candidate" id="input" class="form-control">
+                       <option value="1">OFFICIAL</option>
+                       <option value="2">PARTTIME</option>
+                       <option value="3">FREELANCE</option>
+                       <option value="4">INTERN</option>
+                   </select>
+               </div>
+           </div>
+           
+           
+           <div class="form-group row">
+               <label for="" class="col-sm-2 text-right">thời gian hết hạn</label>
+               <div class="col-sm-10">
+                   <input type="date" name="deadline" id="input" class="form-control" value="" required="required" title="">
+               </div>
+           </div>
+           
+
+           <div class="form-group row">
+             <label for="jobTag" class=" col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">Job Tag</label>
+             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                 <input type="text" name="job_tags" id="jobTag" class="form-control" placeholder="job tag">
+            </div>
+           </div>
+
+
+           <div class="form-group">
+             <input type="hidden" name="type_post" id="" value="1">
+           </div>
+           
+           <div class="form-group">
+             <input type="hidden" name="deleted" id="" value="0">
+           </div>
+           
+
+           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right">
+               <button type="submit" class="btn btn-success">Submit</button>
+           </div>
+           
+           
+       </form>
+       
+                
+    </div>
+    
+    
+</body>
+</html>
