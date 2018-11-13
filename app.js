@@ -1,14 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var jobs = require('./routes/jobs');
+const session = require('express-session');
+const FileStore =require('session-file-store')(session);
 
-var app = express();
+
+const indexRouter = require('./routes/index');
+const recruitmentRouter = require('./routes/recruitment');
+const userRouter = require('./routes/user');
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,8 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/jobs',jobs);
+app.use('/recruitment',recruitmentRouter);
+app.use('/user',userRouter.router);
 
 
 // giao dien
@@ -30,6 +34,16 @@ app.use('/vendor/bootstrap/css', express.static(path.join(__dirname, 'bower_comp
 app.use('/vendor/bootstrap/fonts', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'fonts')));
 app.use('/vendor/bootstrap/js', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'js')));
 app.use('/vendor/jquery', express.static(path.join(__dirname, 'bower_components', 'jquery', 'dist')));
+
+// session support
+app.use(session({
+  store: new FileStore({path: "sessions"}),
+  secret: 'keyboard mouse',
+  resave: false,
+  saveUninitialized: false
+}));
+userRouter.initPassport(app);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+
+    <div class="container mt-lg-5">
+        
+    
+            <h2 class="text-danger">thông tin công việc</h2>
+            <p> <i class="icon_star">*</i> thông tin bắt buộc</p>
+            <hr>
+            <br>
+    
+                <input type="hidden" value="<%= recruitment ?recruitment.company_id:'' %>">
+                <input type="hidden" name="company_id" id="inputcompany_id" class="form-control" value="<%= recruitment ? recruitment.company_id:''  %>">
+                <input type="hidden" name="industry_id" id="inputindustry_id" class="form-control" value="<%=recruitment? recruitment.industry_id:'' %>">
+    
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Mã công việc <i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required  type="text" name="work_id" id="inputwork_id" class="form-control" value="">
+                        <p><%= recruitment ? recruitment.work_id  :''  %></p>
+                    </div>
+                </div>
+                
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Tên công việc<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="work_name" id="inputwork_name" class="form-control" value="">
+                        <p><%= recruitment ? recruitment.work_name  :''  %></p>
+
+                    </div>
+                </div>
+    
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Vị trí<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="position" id="input" class="form-control" value="" min="1" max="" step="" required="required" title="" >
+                        <p><%= recruitment ? recruitment.position  :''  %></p>
+
+                    </div>
+                </div>
+    
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Mô tả<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <textarea class="form-control" id="" rows="10" name="description"><%= recruitment ? recruitment.description  :''  %></textarea>
+                        
+                    </div>
+                </div>
+    
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Yêu cầu<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <textarea class="form-control" id="" rows="10" name="requirement"><%= recruitment ? recruitment.requirement  :''  %></textarea>
+                    </div>
+                </div>
+               
+                <div class=" row">
+                    <label for="" class="col-lg-2 col-md-2 " >Địa điểm<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="location" id="input" class="form-control" value="" required="required"  title="">
+                        <p><%= recruitment ? recruitment.location  :''  %></p>
+
+                    </div>
+                </div>
+               
+               <div class=" row">
+                   <label for="" class="col-lg-2 col-md-2 " >Lương tối thiểu<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                       <input required type="text" name="min_salary" id="input_min_salary" class="form-control" value="" required="required" title="">
+                       <p><%= recruitment ? recruitment.min_salary  :''  %></p>  <p><%= recruitment ? recruitment.max_salary  :''  %></p>
+                       <p><%= recruitment ? recruitment.type_salary  :''  %></p>
+                   </div>
+               </div>
+    
+
+    
+
+    
+               <div class=" row">
+                   <label for="input" class="col-sm-2 control-label ">Kiểu công việc<i class="icon_star">*</i></label>
+                   <div class="col-sm-2">
+                        <p><%= recruitment ? recruitment.type_candidate  :''  %></p>
+
+                   </div>
+               </div>
+               
+    
+               
+               <div class=" row">
+                   <label for="" class="col-sm-2 ">Yêu cầu giới tính<i class="icon_star">*</i></label>
+                   <div class="col-sm-2">
+                    <p><%= recruitment ? recruitment.gender_requirement  :'không'  %></p>
+
+                   </div>
+               </div>
+    
+               <div class=" row">
+                   <label for="" class="col-sm-2">Thời gian hết hạn<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                    <p><%= recruitment ? recruitment.deadline  :'không'  %></p>
+                   </div>
+               </div>
+               
+    
+               <div class=" row">
+                 <label for="jobTag" class=" col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Job Tag<i class="icon_star">*</i></label>
+                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <p><%= recruitment ? recruitment.job_tags  :'không'  %></p>
+                </div>
+               </div>
+    
+    
+               <div class=" row">
+                   <label for="">loại đăng bài</label>
+                   <p><%= recruitment ? recruitment.type_post  :'không'  %></p>
+                </div>
+               
+                <a name="" id="" class="btn btn-primary|secondary|success|danger|warning|info|light|dark|link" href="/recruitment/update_recruitment" role="button">sửa đổi</a>
+                <a name="" id="" class="btn btn-primary|secondary|success|danger|warning|info|light|dark|link" href="#" role="button">xoá</a>
+               
+               
+        
+    </div>
+    
+
+
+    <% include footer %>  
+  </body>
+</html>

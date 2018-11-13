@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+
+    <div class="container">
+    
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3">Quản lý đăng tuyển
+        <small></small>
+      </h1>
+    
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Quản lý đăng tuyển</li>
+      </ol>
+    
+      <!-- Content Row -->
+      <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+          <div class="list-group">
+            <a class="btn-primary rounded-top text-white p-2">Quản lý đăng tuyển</a>
+            <a href="#" class="list-group-item text-dark">> Việc làm đang đăng</a>
+            <a href="#" class="list-group-item text-dark">> Việc làm tạm dừng</a>
+            <a href="#" class="list-group-item text-dark">> Việc làm hết hạn</a>
+          </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+          <!-- QUẢN LÝ USER -->
+          <a name="add_new_work" id="add_new_work" class="btn btn-primary" href="/recruitment/add_new_recruitment" role="button">thêm mới một công việc</a>
+          <div class="container border my-3">
+            <h2>DANH SÁCH</h2>
+            <table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
+              <thead class="thead-inverse|thead-default">
+                <tr>
+                  <th>#</th>
+                  <th>tên công việc</th>
+                  <th>vị trí tuyển dụng</th>
+                  <th>ngày cập nhật</th>
+                  <th>kiểu đăng</th>
+                  <th>hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  
+                </tr>
+              </tbody>
+            </table>
+    
+          </div>
+    
+        </div>
+      </div>
+      <!-- /.row -->
+    
+    </div>
+
+    <% include footer %>  
+  </body>
+</html>

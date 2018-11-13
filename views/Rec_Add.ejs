@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+
+    <div class="container mt-lg-5">
+        <form method="POST" action="/recruitment/add_new_recuitment" role="form">
+    
+            <h2 class="text-danger">Đăng tin tuyển dụng</h2>
+            <p> <i class="icon_star">*</i> thông tin bắt buộc</p>
+            <hr>
+            <br>
+    
+             
+                <input type="hidden" name="company_id" id="inputcompany_id" class="form-control" value="1">
+                <input type="hidden" name="industry_id" id="inputindustry_id" class="form-control" value="1">
+    
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Mã công việc <i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required  type="text" name="work_id" id="inputwork_id" class="form-control" value="">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Tên công việc<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="work_name" id="inputwork_name" class="form-control" value="">
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Vị trí<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="position" id="input" class="form-control" value="" min="1" max="" step="" required="required" title="" >
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Mô tả<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <textarea class="form-control" id="" rows="10" name="description"></textarea>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Yêu cầu<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <textarea class="form-control" id="" rows="10" name="requirement"></textarea>
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    <label for="" class="col-lg-2 col-md-2 " >Địa điểm<i class="icon_star">*</i></label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input required type="text" name="location" id="input" class="form-control" value="" required="required"  title="">
+                    </div>
+                </div>
+               
+               <div class="form-group row">
+                   <label for="" class="col-lg-2 col-md-2 " >Lương tối thiểu<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                       <input required type="text" name="min_salary" id="input_min_salary" class="form-control" value="" required="required" title="">
+                   </div>
+               </div>
+    
+               <div class="form-group row">
+                   <label for="" class="col-lg-2 col-md-2 " >Lương tối đa<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                        <input required type="text" name="max_salary" id="input_max_salary" class="form-control" value="" required="required"  title="">                   
+                   </div>
+               </div>
+    
+               <div class="form-group row">
+                    <label for="input" class="col-sm-2 control-label ">Kiểu tiền tệ<i class="icon_star">*</i></label>
+                    <div class="col-sm-2">
+                        <select name="type_salary" id="input" class="form-control">
+                            <option value="">--chọn--</option>
+                            <option value="1">NEGOTIATION</option>
+                            <option value="2">VND</option>
+                            <option value="3">USD</option>
+                        </select>
+                    </div>
+                </div>
+    
+               <div class="form-group row">
+                   <label for="input" class="col-sm-2 control-label ">Kiểu công việc<i class="icon_star">*</i></label>
+                   <div class="col-sm-2">
+                   <select name="type_candidate" id="input" class="form-control">
+                            <option value="">--chọn--</option>
+                            <option value="1">OFFICIAL</option>
+                            <option value="2">PARTTIME</option>
+                            <option value="3">FREELANCE</option>
+                            <option value="4">INTERN</option>
+                       </select>
+                   </div>
+               </div>
+               
+    
+               
+               <div class="form-group row">
+                   <label for="" class="col-sm-2 ">Yêu cầu giới tính<i class="icon_star">*</i></label>
+                   <div class="col-sm-2">
+                    <select name="gender_requirement" " class="form-control">
+                            <option value="">--chọn--</option>
+                            <option value="0">NỮ</option>
+                            <option value="1">NAM</option>
+                            <option value="2">CẢ HAI</option>
+                        </select>
+                   </div>
+               </div>
+    
+               <div class="form-group row">
+                   <label for="" class="col-sm-2">Thời gian hết hạn<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                       <input required type="date" name="deadline" id="input" class="form-control" value="" required="required" title="">
+                   </div>
+               </div>
+               
+    
+               <div class="form-group row">
+                 <label for="jobTag" class=" col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Job Tag<i class="icon_star">*</i></label>
+                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                     <input required type="text" name="job_tags" id="jobTag" class="form-control" placeholder="job tag">
+                </div>
+               </div>
+    
+    
+               <div class="form-group row">
+                    <input type="hidden" name="type_post" value="1">                
+               </div>
+               
+               <div class="form-group">
+                 <input type="hidden" name="deleted" id="" value="0">
+               </div>
+               
+               <div class="form-group row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-left">
+                         <button type="submit" class="btn btn-success">Submit</button>
+                     </div>
+               </div>
+        </form>
+    </div>
+    
+
+
+    <% include footer %>  
+  </body>
+</html>

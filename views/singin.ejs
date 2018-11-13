@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include headerStuff %>  
+</head>
+<body>
+    <% include pageHeader %>
+
+    <div class="container mt-5">
+        <h1><%= title %></h1>
+        <p><i class="icon_star">*</i> thông tin bắt buộc</p>
+        <div class="container border p-3 m-3">
+
+            <form action="" method="post">
+                <h4 class="bg-light border-bottom p-2">THÔNG TIN ĐĂNG NHẬP</h4> 
+                <div class="form-group form-row">
+                    <label for="input_email" class="col-sm-3">Email<i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input required type="input_email" name="input_email" id="input_email" class="form-control" placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group form-row">
+                    <label for="input_password" class="col-sm-3">Password<i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input required type="input_password" name="input_password" id="input_password" class="form-control" placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+
+                <h4 class="bg-light border-bottom p-2">THÔNG TIN CÔNG TY</h4>
+                <div class="form-group form-row">
+                    <label for="input_company_name" class="col-sm-3">TÊN CÔNG TY <i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input required type="text" name="input_company_name" id="input_company_name" class="form-control"
+                            placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="input_total_employee" class="col-sm-3">TỔNG SỐ NHÂN VIÊN </label>
+                    <div class="col-sm-4">
+                        
+                        <select name="input_total_employee" id="input_total_employee" class="form-control">
+                            <option value="">-- Select One --</option>
+                            <option value="ít hơn 10">ít hơn 10</option>
+                            <option value="10-20">10-20</option>
+                            <option value="25-99">25-99</option>
+                            <option value="100-499">100-499</option>
+                            <option value="500-999">500-999</option>
+                        </select>
+                        
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="input_intro" class="col-sm-3">Giới thiệu về công ty <i class="icon_star">*</i></label>
+                    <div class="col-sm-9">
+                        <textarea required class="form-control" name="input_intro" id="input_intro" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="input_user_name" class="col-sm-3">Tên người liên hệ<i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input type="text" name="input_user_name" id="input_user_name" class="form-control" placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group form-row">
+                    <label for="input_logo" class="col-sm-3">Logo <i class="icon_star">*</i></label>
+                    <div class="col-sm-9">
+                        <input required type="file" class="form-control-file" id="input_logo" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted">định dạng: *.gif,*.png,*.jpg</small>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="input_banner" class="col-sm-3">Banner <i class="icon_star">*</i></label>
+                    <div class="col-sm-9">
+                        <input required type="file" name="input_banner" id="input_banner" class="form-control-file" placeholder=""
+                            aria-describedby="helpId">
+                        <small id="helpId" class="text-muted">định dạng: *.gif,*.png,*.jpg</small>
+                    </div>
+                </div> -->
+                <button type="submit" class="btn btn-primary">LƯU</button>
+                <button type="submit" class="btn btn-primary">HUỶ</button>
+
+
+            </form>
+
+        </div>
+
+        
+    </div>
+
+
+    <% include footer %>
+</body>
+</html>

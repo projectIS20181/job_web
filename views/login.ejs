@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include headerStuff %>
+</head>
+
+<body>
+    <% include pageHeader %>
+
+    <div class="container mt-5">
+        <h1><%= title %></h1>
+        <p><i class="icon_star">*</i> thông tin bắt buộc</p>
+        <div class="container border p-3 m-3">
+            <form action="/user/login" method="post">
+                <div class="form-group form-row">
+                    <label for="input_email" class="col-sm-3">Email<i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input required type="email" name="username" id="input_email" class="form-control" placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+                    </div>
+                </div>
+                
+                <div class="form-group form-row">
+                    <label for="input_password" class="col-sm-3">Password<i class="icon_star">*</i></label>
+                    <div class="col-sm-4">
+                        <input required type="password" name="password" id="input_password" class="form-control" placeholder="" aria-describedby="helpId">
+                        <small id="helpId" class="text-muted"></small>
+
+                        <button type="submit" class="btn btn-primary mx-1 my-3">ĐĂNG NHẬP</button>
+                        <button type="submit" class="btn btn-primary mx-1">HUỶ</button>
+                    </div>
+                </div>
+
+                
+            </form>
+
+        </div>
+    </div>
+
+
+    <% include footer %>
+</body>
+
+</html>
