@@ -8,7 +8,7 @@ exports.router = router;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const userModel = require('../models/User.model');
+const usersModel = require('../models/User.model');
 
 exports.initPassport = function (app) {
     app.use(passport.initialize());
@@ -18,13 +18,17 @@ exports.initPassport = function (app) {
 exports.ensureAuthenticated = function (req, res, next) {
     // req.user is set by Passport in the deserialize function
     if (req.user) next();
-    else res.redirect('/user/login');
+    else return res.redirect('/user/login');
 };
-  
+
 
 /* signin */
 router.get('/singin',function( req, res, next) {
-    res.render('singin', {title: 'ĐĂNG KÍ NHÀ TUYỂN DỤNG'});
+
+    res.render('singin', {
+        user:null,
+        title: 'ĐĂNG KÍ NHÀ TUYỂN DỤNG'
+    });
 });
 
 router.post('/singin',function(req, res, next){
@@ -35,46 +39,32 @@ router.post('/singin',function(req, res, next){
 
 // todo get login
 router.get('/login',function(req, res, next) {
-    res.render('login', { 
+    res.render('login', {
+        user: "", 
         title: ' ĐĂNG NHẬP NHÀ TUYỂN DỤNG',
     });
 });
 
-// todo post login
-/* router.post('/login',function(req, res, next){
-    let user = req.body;
-    console.log('log user router:', user);
-    userModel.getUser(user)
-    .then( (respone)=> {
-        console.log("log router user",respone.data);
-        if(respone.data.status ==="SUCCESS"){
-            res.redirect('/');
-        }
-        else if (respone.data.status ==="FAILED"){
-            res.redirect('/user/login');
-        }
-    })
-    .catch((err) => console.log("err router user",err));
-}); */
-
 // todo kiem tra login bang passport
-
-
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: 'login' }),
   function(req, res) {
     res.redirect('/');
   });
 
-
-
-
 // todo logout
 router.get('/logout',function(req,res,next){
     req.logout();
-    res.redirect('/');
+    res.redirect('/user/login');
 });
 
+// todo get tai khoản
+router.get('/taikhoan', function(req,res, next) {
+    
+    res.render('User_Manage', {
+        title: "quản lý  thông tin cá nhân"
+    });
+});
 
 
 // todo passport strategy local
@@ -86,8 +76,8 @@ passport.use(new LocalStrategy(
             role: 2
         };
         console.log('passport user '+ util.inspect(user));
-        
-        userModel.getUser(user).then(respone => {
+        usersModel.getUser(user).then(respone => {
+            console.log(1234567892345678);
             var data =  respone.data;
             if(data.status ==="SUCCESS"){
                 var user = data.user;
@@ -104,6 +94,7 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser(function(user, done) {
     console.log('serializeUser '+ util.inspect(user));
+    // lưu user_id vào  passport.user = user_id trong session
     done(null, user.user_id);
 });
 
@@ -113,7 +104,7 @@ passport.deserializeUser(function (user_id, done) {
         .then(respone => {
             data = respone.data;
             if(data.status ==="SUCCESS"){
-                var user = JSON.parse(data.user);
+                var user = data.user;
                 console.log('... found user ' + util.inspect(user));
                 done(null, user);
             }
@@ -123,7 +114,3 @@ passport.deserializeUser(function (user_id, done) {
         })
         .catch(err => done(err));
 });
-  
-
-
-

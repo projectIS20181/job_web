@@ -1,14 +1,32 @@
     <div class="container bg-dark fixed-top">
 
         <ul class="nav justify-content-center|justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="/user/singin">đăng kí</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user/login">đăng nhập</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/recruitment">Quản lý bài đăng</a>
-            </li>
+            <% if (!user || user==="") { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/singin">đăng kí</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/login">đăng nhập</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/recruitment">Quản lý bài đăng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/comp_candidte">Quản lý hồ sơ ứng viên</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/comp_candidte/search">Tìm kiếm ứng viên</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/taikhoan">Quản lý tài khoản</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/logout">đăng xuất</a>
+                </li>
+
+            <% } %>
+
         </ul>
     </div>

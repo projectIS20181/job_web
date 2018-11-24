@@ -7,10 +7,10 @@ const logger = require('morgan');
 const session = require('express-session');
 const FileStore =require('session-file-store')(session);
 
-
 const indexRouter = require('./routes/index');
 const recruitmentRouter = require('./routes/recruitment');
 const userRouter = require('./routes/user');
+const comp_canRouter = require('./routes/comp_candidate');
 
 const app = express();
 
@@ -24,26 +24,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/recruitment',recruitmentRouter);
-app.use('/user',userRouter.router);
-
-
 // giao dien
 app.use('/vendor/bootstrap/css', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'css')));
 app.use('/vendor/bootstrap/fonts', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'fonts')));
 app.use('/vendor/bootstrap/js', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'js')));
 app.use('/vendor/jquery', express.static(path.join(__dirname, 'bower_components', 'jquery', 'dist')));
 
-// session support
+
 app.use(session({
   store: new FileStore({path: "sessions"}),
   secret: 'keyboard mouse',
-  resave: false,
+  resave: true,
   saveUninitialized: false
 }));
 userRouter.initPassport(app);
 
+app.use('/', indexRouter);
+app.use('/recruitment',recruitmentRouter);
+app.use('/user',userRouter.router);
+app.use('/comp_candidte',comp_canRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

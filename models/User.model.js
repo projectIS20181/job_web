@@ -36,15 +36,13 @@ user.getUser = function(user) {
 
 // todo get_user_by_id
 user.getUserById = function(user_id) {
-    console.log("user_id: "+ user_id);
+    console.log("user_id on User.model: "+ user_id);
     return this.connect().then(client =>{
-        return client.get(
+        return client.post(
             // todo đường dẫn
             '/users/get_user_by_id',
             {
-                params:{
-                    id:user_id
-                }
+                id:user_id
             }
         )
     })

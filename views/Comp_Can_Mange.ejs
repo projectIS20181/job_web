@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include headerStuff %>
+  </head>
+  <body>
+    <% include pageHeader %>
+    
+    <div class="container">
+        <h1 class="mt-4 mb-3"><%=title %>
+            <small></small>
+        </h1>
+    
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Quản lý hồ sơ ứng viên</li>
+        </ol>
+    
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Sidebar Column -->
+            <div class="col-lg-3 mb-4">
+                <div class="list-group">
+                    <a class="btn-primary rounded-top text-white p-2"> Quản lý ứng viên</a>
+                    <a href="#" class="list-group-item text-dark"><i class="fa fa-angle-right"></i> Hồ sơ đã lưu</a>
+                    <a href="#" class="list-group-item text-dark"><i class="fa fa-angle-right"></i> Hồ sơ đã xoá</a>
+                    <a href="#" class="list-group-item text-dark"><i class="fa fa-angle-right"></i> ứng viên đang theo dõi</a>
+                </div>
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-9 mb-4">
+                <div class="container">
+    
+                    <table class="table table-hover  table-responsive">
+                        <thead class="thead-inverse|thead-default">
+                            <tr>
+                                <th>stt</th>
+                                <th>tên</th>
+                                <th>ngày</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td><a href="3">nguyễn văn thắng</a> </td>
+                                <td>20-10-2018</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td><a href="#">nguyễn văn thắng</a> </td>
+                                <td>20-10-2018</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ 
+    <% include footer %>
+  </body>
+</html>

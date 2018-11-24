@@ -2,12 +2,14 @@
 var express = require("express");
 var router = express.Router();
 const RecruitmentModel = require('../models/Recruitment.model');
+const userRouter = require('./user');
 
-router.get('/',function(req, res, next ) {
+router.get('/', function(req, res, next ) {
     // todo lấy danh sách rec đổ ra biến rec
     // var rec = RecruitmentModel.getListRec();
-    
+    console.log("req.user",req.user);
     res.render('Rec_Mange', {
+        user: req.user,
         title:" QUẢN LÝ BÀI ĐĂNG "
     });
 });
