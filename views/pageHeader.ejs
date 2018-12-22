@@ -2,6 +2,11 @@
 
         <ul class="nav justify-content-center|justify-content-end">
             <% if (!user || user==="") { %>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">HOME JOB</a>
+                </li>
+            
                 <li class="nav-item">
                     <a class="nav-link" href="/user/singin">đăng kí</a>
                 </li>
@@ -20,6 +25,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user/taikhoan">Quản lý tài khoản</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/taikhoan">chào <%=user.user_name %></a>
                 </li>
                 
                 <li class="nav-item">

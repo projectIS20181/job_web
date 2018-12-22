@@ -24,7 +24,7 @@ exports.ensureAuthenticated = function (req, res, next) {
 
 /* signin */
 router.get('/singin',function( req, res, next) {
-
+    
     res.render('singin', {
         user:null,
         title: 'ĐĂNG KÍ NHÀ TUYỂN DỤNG'
@@ -33,11 +33,22 @@ router.get('/singin',function( req, res, next) {
 
 router.post('/singin',function(req, res, next){
     let user = req.body;
-    console.log('user:', user);
+    console.log(user);
+    let object = usersModel.infoSigin(user);
+    usersModel.signin(object).then(respone => {
+        var data = respone.data;
+        console.log("thông tin gửi về ",data);
+        console.log("data.status",data.status);
+        if(data.status == 'SUCCESS') {
+            res.redirect('/user/login');
+        } else if (data.status =='FAILED') {
+            res.redirect('/user/singin');
+        }
+    }).catch(err => next(err));
 });
 
 
-// todo get login
+/* login */
 router.get('/login',function(req, res, next) {
     res.render('login', {
         user: "", 
@@ -45,29 +56,34 @@ router.get('/login',function(req, res, next) {
     });
 });
 
-// todo kiem tra login bang passport
+/* login passport */
 router.post('/login', 
   passport.authenticate('local', { failureRedirect: 'login' }),
   function(req, res) {
     res.redirect('/');
   });
 
-// todo logout
+/* logout */
 router.get('/logout',function(req,res,next){
-    req.logout();
-    res.redirect('/user/login');
+    // req.logout();
+    // res.redirect('/user/login');
+    req.session.destroy(function (err) {
+        res.redirect('/'); //Inside a callback… bulletproof!
+    });
 });
 
-// todo get tai khoản
-router.get('/taikhoan', function(req,res, next) {
+/* quaản lý tài khoản */
+router.get('/taikhoan',this.ensureAuthenticated, function(req,res, next) {
     
+    var user = req.user ? req.user : undefined;
     res.render('User_Manage', {
+        user: user,
         title: "quản lý  thông tin cá nhân"
     });
 });
 
 
-// todo passport strategy local
+/* passport support local  */
 passport.use(new LocalStrategy(
     function(username, password, done) {
         var user ={
@@ -103,6 +119,7 @@ passport.deserializeUser(function (user_id, done) {
     usersModel.getUserById(user_id)
         .then(respone => {
             data = respone.data;
+            console.log('data:',data);
             if(data.status ==="SUCCESS"){
                 var user = data.user;
                 console.log('... found user ' + util.inspect(user));

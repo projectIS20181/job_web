@@ -40,9 +40,9 @@ app.use(session({
 userRouter.initPassport(app);
 
 app.use('/', indexRouter);
-app.use('/recruitment',recruitmentRouter);
-app.use('/user',userRouter.router);
-app.use('/comp_candidte',comp_canRouter);
+app.use('/recruitment', recruitmentRouter);
+app.use('/user', userRouter.router);
+app.use('/comp_candidte', comp_canRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

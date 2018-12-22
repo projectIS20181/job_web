@@ -7,7 +7,108 @@
     <% include pageHeader %>
     <div class="container"> 
       <h2><%=title %></h2>
+      <!-- tìm kiếm -->
+      <div class="container">
+      
+
+      <form action="/comp_candidte/search" method="post" class="my-2">
+
+        <div class="form-group">
+          <label for="position">Vị trí tuyển dụng</label>
+          <input type="text" name="position" id="position" class="form-control" placeholder='ex: "software engineer " and java ' aria-describedby="helpId">
+          <small id="helpId" class="text-muted"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="degree">Trình độ</label>
+          <select class="custom-select" name="degree" id="degree">
+            <option selected value="">lựa chọn trình độ ứng viên</option>
+            <option value="1">chưa tốt nghiệp</option>
+            <option value="2">tốt nghiệp trung học phổ thông</option>
+            <option value="3">tốt nghiệp trung cấp</option>
+            <option value="4">tốt nghiệp cao đẳng</option>
+            <option value="5">tốt nghiệp đại học</option>
+            <option value="5">trình độ sau đại học</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="job_type">Yêu cầu của ứng viên</label>
+          <select class="custom-select" name="job_type" id="job_type">
+            <option selected value="">lựa chọn yêu cầu công việc</option>
+            <option value="1">nhân viên chính thức</option>
+            <option value="2">nhân viên partime</option>
+            <option value="3">nhân viên tự do</option>
+            <option value="4">thực tập sinh</option>
+          </select>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="min_salary">Lương tối thiểu</label>
+            <input type="number" class="form-control" id="min_salary" name="min_salary" min="0" max="100000000">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="max_salary">Lương tối đa</label>
+            <input type="number" class="form-control" id="max_salary" name="max_salary" min="0" max="100000000">
+          </div>
+          
+          <div class="form-group col-md-2">
+            <label for="salary_type">Đơn vị</label>
+            <select name="salary_type" id="salary_type" class="form-control">
+              <option value="">Lựa chọn kiểu tiền tệ</option>
+              <option value="2">VNĐ</option>
+              <option value="3">USD</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="experience">Kinh nghiệm làm việc</label>
+          <input type="text" name="experience" id="experience" class="form-control" placeholder="" aria-describedby="helpId">
+          <small id="helpId" class="text-muted"></small>
+        </div>
+
+          
+        <div class="form-row">
+          <div class="form-group col-sm-8">
+            <label for="foreign_lang">Ngoại ngữ</label>
+            <select class="custom-select" name="foreign_lang" id="foreign_lang">
+              <option selected value="">Lựa chọn ngoại ngữ yêu cầu</option>
+              <option value="1">Tiếng Việt</option>
+              <option value="2">Tiếng Anh</option>
+              <option value="3">Tiếng Pháp</option>
+              <option value="4">Tiếng Đức</option>
+              <option value="5">Tiếng Nga</option>
+              <option value="6">Tiếng Trung Quốc</option>
+              <option value="7">Tiếng Hàn Quốc</option>
+              <option value="8">Tiếng Nhật</option>
+              <option value="9">Ngôn ngữ khác</option>
+            </select>
+          </div>
+
+          <div class="form-group col-sm-4">
+            <label for="level_foreign_lang">Trình độ ngoại ngữ</label>
+            <select class="custom-select" name="level_foreign_lang" id="level_foreign_lang">
+              <option selected value="">Lựa chọn trình độ ngoại ngữ</option>
+              <option value="1">Bản xứ</option>
+              <option value="2">Thấp</option>
+              <option value="3">Trung bình</option>
+              <option value="4">Cao</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary ">tìm kiếm</button>
+          </div>
+        </div>
+      </form>
+      </div>
     </div>
+
     <% include footer %>
   </body>
 </html>

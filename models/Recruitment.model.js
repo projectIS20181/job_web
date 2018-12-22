@@ -14,11 +14,12 @@ var connect = function(){
             reject(error);
         }
     }).then(client => {
-        console.log("client: ", client);
+        // console.log("client: ", client);
         return client;
     });
 };
 
+//todo post add a rec
 Recruitment.addNewRecruitment = function(recruitment)
 {
     return connect().then(client => {
@@ -56,6 +57,12 @@ Recruitment.getListRec = function(){
     
 }
 
+// todo get list rec by type post
+Recruitment.getListRecByTypePost = function(type_post){
+
+}
+
+//todo get a recruitment by rec_id
 Recruitment.getRecruitmentById = function(rec_id){
     return connect().then(client => {
         return client.get('/recruitment/get_rec_by_id',{
@@ -66,6 +73,15 @@ Recruitment.getRecruitmentById = function(rec_id){
     });
 };
 
+// todo post update a rec
+Recruitment.updateRecById = function(recruitment) {
+
+}
+
+// todo delete rec by id 
+Recruitment.deleteRecById = function(rec_id) {
+    
+}
 
 
 module.exports = Recruitment;

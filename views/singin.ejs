@@ -8,10 +8,12 @@
 
     <div class="container mt-5">
         <h1><%= title %></h1>
+        <h2></h2>
+        
         <p><i class="icon_star">*</i> thông tin bắt buộc</p>
         <div class="container border p-3 m-3">
 
-            <form action="" method="post">
+            <form action="/user/singin" method="post">
                 <h4 class="bg-light border-bottom p-2">THÔNG TIN ĐĂNG NHẬP</h4> 
                 <div class="form-group form-row">
                     <label for="input_email" class="col-sm-3">Email<i class="icon_star">*</i></label>
@@ -24,7 +26,7 @@
                 <div class="form-group form-row">
                     <label for="input_password" class="col-sm-3">Password<i class="icon_star">*</i></label>
                     <div class="col-sm-4">
-                        <input required type="input_password" name="input_password" id="input_password" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input required type="password" name="input_password" id="input_password" class="form-control" placeholder="" aria-describedby="helpId">
                         <small id="helpId" class="text-muted"></small>
                     </div>
                 </div>
@@ -88,7 +90,7 @@
                     </div>
                 </div> -->
                 <button type="submit" class="btn btn-primary">LƯU</button>
-                <button type="submit" class="btn btn-primary">HUỶ</button>
+                <a  href="#" class="btn btn-primary">HUỶ</a>
 
 
             </form>
