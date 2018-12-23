@@ -28,7 +28,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/user/taikhoan">chào <%=user.user_name %></a>
+                    <a class="nav-link" href="/user/taikhoan">chào <%= user.user.user_name ? user.user.user_name : user.user.email%> !</a>
                 </li>
                 
                 <li class="nav-item">

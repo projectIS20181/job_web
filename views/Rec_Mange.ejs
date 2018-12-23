@@ -13,31 +13,45 @@
     
       <!-- Content Row -->
       <div class="row">
-        <!-- Sidebar Column -->
-        <% include Rec_Mange_sidebar %>
+        
         <!-- Content Column -->
         <div class="col-lg-9 mb-4">
           <!-- QUẢN LÝ USER -->
           <!-- nút thêm mới một công việc -->
           <a name="add_new_work" id="add_new_work" class="btn btn-primary" href="/recruitment/add_new_recruitment" role="button">thêm mới một công việc</a>
           <div class="container border my-3">
-            <h2>DANH SÁCH</h2>
-            <table class="table table-{1:striped|sm|bordered|hover|inverse} table-inverse table-responsive">
-              <thead class="thead-inverse|thead-default">
-                <tr>
-                  <th>#</th>
-                  <th>tên công việc</th>
-                  <th>vị trí tuyển dụng</th>
-                  <th>ngày cập nhật</th>
-                  <th>kiểu đăng</th>
-                  <th>hành động</th>
+            <table class="table text-left">
+              <thead>
+                <tr class="row">
+                  <th class="col-1"> mã công việc</th>
+                  <th class="col-3">tên công việc</th>
+                  <th class="col-3">vị trí tuyển</th>
+                  <th class="col-3">thời gian hết hạn</th>
+                  <th class="col-2">hành động</th>
                 </tr>
               </thead>
               <tbody>
-
-                <tr>
-                  
-                </tr>
+              <%
+                if(listRec != undefined && listRec !="") {
+                  for (let index = 0; index < listRec.length; index++) {
+                    const element = listRec[index];
+                    %>
+                      <tr class="row">
+                        <td class="col-1"><a href="/recruitment/get_by_id_view/<%= element.recruitment_id %>"><%= element.work_id %></a></td>
+                        <td class="col-3"><%= element.work_name %></td>
+                        <td class="col-3"><%= element.position %></td>
+                        <td class="col-3"><%= element.deadline %></td>
+                        <td class="col-2">
+                          <a href="/recruitment/get_by_id_update/<%= element.recruitment_id %>" class="btn btn-primary">edit</a>
+                          <a href="/recruitment/delete_by_id/<%= element.recruitment_id %>" class="btn btn-danger">xoá</a>
+                        </td>
+                      </tr>
+                    <%
+                  }
+                } else { %> 
+                  <tr class="row text-center"> Chưa có công việc </tr>
+                <% }
+              %>
               </tbody>
             </table>
     

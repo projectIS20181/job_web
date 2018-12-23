@@ -5,18 +5,35 @@
   </head>
   <body>
     <% include pageHeader %>
+    
 
     <div class="container mt-lg-5">
         <form method="POST" action="/recruitment/add_new_recuitment" role="form">
     
-            <h2 class="text-danger">Đăng tin tuyển dụng</h2>
+            <h2 class="text-danger"><%= title%></h2>
             <p> <i class="icon_star">*</i> thông tin bắt buộc</p>
             <hr>
             <br>
     
              
-                <input type="hidden" name="company_id" id="inputcompany_id" class="form-control" value="1">
-                <input type="hidden" name="industry_id" id="inputindustry_id" class="form-control" value="1">
+                <input type="hidden" name="company_id_fk" id="inputcompany_id" class="form-control" value="<%= user.company_user.company_id_fk %>">
+                <div class="form-group row">
+                    <label for="industry_id_fk" class="col-2">Lĩnh vực</label>
+
+                    <div class="col-sm-10">
+                        <select class="custom-select" name="industry_id_fk" id="industry_id_fk">
+                            <%
+                                for (let index = 0; index < listIndustry.length; index++) {
+                                    const element = listIndustry[index];
+                                    %>
+                                        <option value="<%=element.industry_id %>"><%=element.name%></option>
+                                    <%
+                                }
+                            %>
+                            
+                        </select>
+                    </div>
+                </div>
     
                 <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Mã công việc <i class="icon_star">*</i></label>
@@ -79,9 +96,16 @@
                     <div class="col-sm-2">
                         <select name="type_salary" id="input" class="form-control">
                             <option value="">--chọn--</option>
-                            <option value="1">NEGOTIATION</option>
-                            <option value="2">VND</option>
-                            <option value="3">USD</option>
+                            <%    
+                            for (const key in constant.TYPE_SALARY) {
+                                if (constant.TYPE_SALARY.hasOwnProperty(key)) {
+                                    const element = constant.TYPE_SALARY[key];
+                                    %>
+                                    <option value="<%=element%>"><%=key%></option>
+                                    <%
+                                    }
+                                }
+                            %>
                         </select>
                     </div>
                 </div>
@@ -90,11 +114,17 @@
                    <label for="input" class="col-sm-2 control-label ">Kiểu công việc<i class="icon_star">*</i></label>
                    <div class="col-sm-2">
                    <select name="type_candidate" id="input" class="form-control">
-                            <option value="">--chọn--</option>
-                            <option value="1">OFFICIAL</option>
-                            <option value="2">PARTTIME</option>
-                            <option value="3">FREELANCE</option>
-                            <option value="4">INTERN</option>
+                        <option value="">--chọn--</option>
+                        <%    
+                        for (const key in constant.JOB_TYPE) {
+                            if (constant.JOB_TYPE.hasOwnProperty(key)) {
+                                const element = constant.JOB_TYPE[key];
+                                    %>
+                                    <option value="<%=element%>"><%=key%></option>
+                                    <%
+                                }
+                            }
+                        %>
                        </select>
                    </div>
                </div>
@@ -106,9 +136,16 @@
                    <div class="col-sm-2">
                     <select name="gender_requirement" " class="form-control">
                             <option value="">--chọn--</option>
-                            <option value="0">NỮ</option>
-                            <option value="1">NAM</option>
-                            <option value="2">CẢ HAI</option>
+                            <%    
+                            for (const key in constant.GENDER) {
+                                if (constant.GENDER.hasOwnProperty(key)) {
+                                    const element = constant.GENDER[key];
+                                        %>
+                                        <option value="<%=element%>"><%=key%></option>
+                                        <%
+                                    }
+                            }
+                            %>
                         </select>
                    </div>
                </div>

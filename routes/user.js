@@ -119,11 +119,12 @@ passport.deserializeUser(function (user_id, done) {
     usersModel.getUserById(user_id)
         .then(respone => {
             data = respone.data;
-            console.log('data:',data);
+            // console.log('data:',data);
+            // lưu thông tin user_company vào req.user
             if(data.status ==="SUCCESS"){
                 var user = data.user;
-                console.log('... found user ' + util.inspect(user));
-                done(null, user);
+                // console.log('... found user ' + util.inspect(user));
+                done(null, data);
             }
             else {
                 done(err);

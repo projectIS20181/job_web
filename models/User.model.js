@@ -19,7 +19,7 @@ userModel.connect = function(){
     });
 };
 
-// todo lấy thông tin đăng nhập
+// todo lấy thông tin đăng nhập 
 userModel.getUser = function(user) {
     console.log("log user model",user);
     return this.connect().then(client => {

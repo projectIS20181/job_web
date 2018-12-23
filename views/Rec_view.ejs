@@ -5,123 +5,170 @@
   </head>
   <body>
     <% include pageHeader %>
+    
 
     <div class="container mt-lg-5">
-        
+        <form method="POST" action="" role="form">
     
-            <h2 class="text-danger">thông tin công việc</h2>
+            <h2 class="text-danger"><%= title%></h2>
             <p> <i class="icon_star">*</i> thông tin bắt buộc</p>
             <hr>
             <br>
     
-                <input type="hidden" value="<%= recruitment ?recruitment.company_id:'' %>">
-                <input type="hidden" name="company_id" id="inputcompany_id" class="form-control" value="<%= recruitment ? recruitment.company_id:''  %>">
-                <input type="hidden" name="industry_id" id="inputindustry_id" class="form-control" value="<%=recruitment? recruitment.industry_id:'' %>">
+             
+                <input type="hidden" name="recruitment_id" id="inputcompany_id" class="form-control" value="<%=recruitment.recruitment_id%>">
+                <input type="hidden" name="company_id_fk" id="inputcompany_id" class="form-control" value="<%=recruitment.company_id_fk %>">
+                <div class="form-group row">
+                    <label for="industry_id_fk" class="col-2">Lĩnh vực <i class="icon_star">*</i></label>
+
+                    <div class="col-sm-10">
+                        
+                        <%
+                            for (let index = 0; index < listIndustry.length; index++) {
+                                const element = listIndustry[index];
+                                if (element.industry_id == recruitment.industry_id_fk){ 
+                                %>
+                                    <p><%=element.name%></p>
+                                <%
+                                }     
+                            }
+                        %>
+                    </div>
+                </div>
     
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Mã công việc <i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <input required  type="text" name="work_id" id="inputwork_id" class="form-control" value="">
-                        <p><%= recruitment ? recruitment.work_id  :''  %></p>
+                        <p><%=recruitment.work_id%></p>
                     </div>
                 </div>
                 
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Tên công việc<i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <input required type="text" name="work_name" id="inputwork_name" class="form-control" value="">
-                        <p><%= recruitment ? recruitment.work_name  :''  %></p>
-
+                        <p><%=recruitment.work_name%></p>
                     </div>
                 </div>
     
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Vị trí<i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <input required type="text" name="position" id="input" class="form-control" value="" min="1" max="" step="" required="required" title="" >
-                        <p><%= recruitment ? recruitment.position  :''  %></p>
-
+                        <p><%=recruitment.position%></p>
                     </div>
                 </div>
     
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Mô tả<i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <textarea class="form-control" id="" rows="10" name="description"><%= recruitment ? recruitment.description  :''  %></textarea>
-                        
+                        <p><%=recruitment.description%></p>
                     </div>
                 </div>
     
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Yêu cầu<i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <textarea class="form-control" id="" rows="10" name="requirement"><%= recruitment ? recruitment.requirement  :''  %></textarea>
+                        <p><%=recruitment.requirement%></p>
                     </div>
                 </div>
                
-                <div class=" row">
+                <div class="form-group row">
                     <label for="" class="col-lg-2 col-md-2 " >Địa điểm<i class="icon_star">*</i></label>
                     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                        <input required type="text" name="location" id="input" class="form-control" value="" required="required"  title="">
-                        <p><%= recruitment ? recruitment.location  :''  %></p>
-
+                        <p><%=recruitment.location%></p>
                     </div>
                 </div>
                
-               <div class=" row">
+               <div class="form-group row">
                    <label for="" class="col-lg-2 col-md-2 " >Lương tối thiểu<i class="icon_star">*</i></label>
                    <div class="col-sm-3">
-                       <input required type="text" name="min_salary" id="input_min_salary" class="form-control" value="" required="required" title="">
-                       <p><%= recruitment ? recruitment.min_salary  :''  %></p>  <p><%= recruitment ? recruitment.max_salary  :''  %></p>
-                       <p><%= recruitment ? recruitment.type_salary  :''  %></p>
+                       <p><%=recruitment.min_salary%></p>
                    </div>
                </div>
     
-
+               <div class="form-group row">
+                   <label for="" class="col-lg-2 col-md-2 " >Lương tối đa<i class="icon_star">*</i></label>
+                   <div class="col-sm-3">
+                        <p><%=recruitment.max_salary%></p>                  
+                   </div>
+               </div>
     
-
+               <div class="form-group row">
+                    <label for="input" class="col-sm-2 control-label ">Kiểu tiền tệ<i class="icon_star">*</i></label>
+                    <div class="col-sm-2">
+                            <%    
+                            for (const key in constant.TYPE_SALARY) {
+                                if (constant.TYPE_SALARY.hasOwnProperty(key)) {
+                                    const element = constant.TYPE_SALARY[key];
+                                    if (element == recruitment.gender_requirement) {
+                                        %>
+                                        <p><%=key%></p>
+                                        <%
+                                    } 
+                                }
+                            }    
+                            %>
+                    </div>
+                </div>
     
-               <div class=" row">
+               <div class="form-group row">
                    <label for="input" class="col-sm-2 control-label ">Kiểu công việc<i class="icon_star">*</i></label>
                    <div class="col-sm-2">
-                        <p><%= recruitment ? recruitment.type_candidate  :''  %></p>
-
+                            <%    
+                            for (const key in constant.JOB_TYPE) {
+                                if (constant.JOB_TYPE.hasOwnProperty(key)) {
+                                    const element = constant.JOB_TYPE[key];
+                                    if (element == recruitment.gender_requirement) {
+                                        %>
+                                        <p><%=key%></p>
+                                        <%
+                                    } 
+                                }
+                            }    
+                            %>
+                       
                    </div>
                </div>
                
-    
-               
-               <div class=" row">
+               <div class="form-group row">
                    <label for="" class="col-sm-2 ">Yêu cầu giới tính<i class="icon_star">*</i></label>
                    <div class="col-sm-2">
-                    <p><%= recruitment ? recruitment.gender_requirement  :'không'  %></p>
-
+                        <%    
+                        for (const key in constant.GENDER) {
+                            if (constant.GENDER.hasOwnProperty(key)) {
+                                const element = constant.GENDER[key];
+                                if (element == recruitment.gender_requirement) {
+                                    %>
+                                    <p><%=key%></p>
+                                    <%
+                                } 
+                            }
+                        }    
+                        %>
                    </div>
                </div>
     
-               <div class=" row">
+               <div class="form-group row">
                    <label for="" class="col-sm-2">Thời gian hết hạn<i class="icon_star">*</i></label>
                    <div class="col-sm-3">
-                    <p><%= recruitment ? recruitment.deadline  :'không'  %></p>
+                       <p><%=recruitment.deadline%></p>
                    </div>
                </div>
                
     
-               <div class=" row">
+               <div class="form-group row">
                  <label for="jobTag" class=" col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Job Tag<i class="icon_star">*</i></label>
                  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                    <p><%= recruitment ? recruitment.job_tags  :'không'  %></p>
+                     <p><%=recruitment.job_tags %></p>
                 </div>
                </div>
-    
-    
-               <div class=" row">
-                   <label for="">loại đăng bài</label>
-                   <p><%= recruitment ? recruitment.type_post  :'không'  %></p>
-                </div>
-               
-                <a name="" id="" class="btn btn-primary|secondary|success|danger|warning|info|light|dark|link" href="/recruitment/update_recruitment" role="button">sửa đổi</a>
-                <a name="" id="" class="btn btn-primary|secondary|success|danger|warning|info|light|dark|link" href="#" role="button">xoá</a>
+               <div class="form-group row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-left">
+                         <a href="/recruitment" class="btn btn-success">TRỞ LẠI</a>
+                     </div>
+               </div>
+        </form>
     </div>
     
 
